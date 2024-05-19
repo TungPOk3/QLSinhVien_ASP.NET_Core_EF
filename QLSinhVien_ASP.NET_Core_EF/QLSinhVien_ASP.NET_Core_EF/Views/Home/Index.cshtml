@@ -1,8 +1,175 @@
-﻿@{
+﻿@model IEnumerable<QLSinhVien_ASP.NET_Core_EF.Models.Khoa>
+@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Header Area -->
+<header class="header">
+    <!-- Header Inner -->
+    <div class="header-inner" style="padding-top: 30px;">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Start Logo -->
+                        <div class="logo">
+                            <a href="index.html"><img src="~/images/logo_dhdn1.png" alt="#" style="width:200px;height:75px; object-fit:contain"></a>
+                        </div>
+                        <!-- End Logo -->
+                        <!-- Mobile Nav -->
+                        <div class="mobile-nav"></div>
+                        <!-- End Mobile Nav -->
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu">
+                            <nav class="navigation">
+                                <ul class="nav menu">
+                                    <li class="active"><a href="#">Trang chủ</a></li>
+                                    <li><a href="#">Giới thiệu </a></li>
+                                    <li><a href="/Home/ChuNhaXe">Nhà xe </a></li>
+                                    <li><a href="Home/QLLichTrinh">Chuyến xe </a></li>
+                                    <li><a href="/Home/TaiXeInfor">Tài xế </i></a></li>
+                                    <li><a href="contact.html">Liên hệ</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--/ End Main Menu -->
+                    </div>
+                    <div class="col-lg-2 col-12">
+                        <div class="get-quote">
+                            <a href="/Home/LoginPage" class="btn">Đăng nhập</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!-- End Header Area -->
+<!-- Slider Area -->
+<section class="slider">
+    <div class="hero-slider">
+        <!-- Start Single Slider -->
+        <div class="single-slider" style="background-image: url('~/images/slider2.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="text">
+                            <h1>Bến xe  <span>Đà Nẵng</span> hân hạnh phục vụ <span>Quý khách</span></h1>
+                            <div class="button">
+                                <a href="#" class="btn">Đăng kí chủ nhà xe</a>
+                                <a href="#" class="btn primary">Tìm hiểu thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Single Slider -->
+        <!-- Start Single Slider -->
+        <div class="single-slider" style="background-image: url('~/images/slider.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="text">
+                            <h1>We Provide <span>Medical</span> Services That You Can <span>Trust!</span></h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam. </p>
+                            <div class="button">
+                                <a href="#" class="btn">Get Appointment</a>
+                                <a href="#" class="btn primary">About Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Start End Slider -->
+        <!-- Start Single Slider -->
+        <div class="single-slider" style="background-image: url('~/images/slider3.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="text">
+                            <h1>We Provide <span>Medical</span> Services That You Can <span>Trust!</span></h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam. </p>
+                            <div class="button">
+                                <a href="#" class="btn">Get Appointment</a>
+                                <a href="#" class="btn primary">Conatct Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Single Slider -->
+    </div>
+</section>
+<!--/ End Slider Area -->
+<!-- Start Schedule Area -->
+<section class="schedule">
+    <div class="container">
+        <div class="schedule-inner">
+            <div class="row">
+                @foreach (var i in Model)
+                {
+                    <div class="col-lg-4 col-md-12 col-12">
+                        <!-- single-schedule -->
+                        <div class="single-schedule last">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i class="icofont-ui-map"></i>
+                                </div>
+                                <div class="single-content">
+                                    <span>Tên trường</span>
+                                    <h4>@i.TenKhoa</h4>
+                                    <p>@i.MoTa</p>
+                                    <a href="">XEM THÊM<i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    if (i.IdKhoa > 2)
+                    {
+                        break;
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--/End Start schedule Area -->
+
+<!-- Start Blog Area -->
+<!-- End Appointment -->
+<!-- Start Newsletter Area -->
+<section class="newsletter section">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-6  col-12">
+                <!-- Start Newsletter Form -->
+                <div class="subscribe-text ">
+                    <h6>Sign up for newsletter</h6>
+                    <p class="">Cu qui soleat partiendo urbanitas. Eum aperiri indoctum eu,<br> homero alterum.</p>
+                </div>
+                <!-- End Newsletter Form -->
+            </div>
+            <div class="col-lg-6  col-12">
+                <!-- Start Newsletter Form -->
+                <div class="subscribe-form ">
+                    <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                        <input name="EMAIL" placeholder="Your email address" class="common-input" onfocus="this.placeholder = ''"
+                               onblur="this.placeholder = 'Your email address'" required="" type="email">
+                        <button class="btn">Subscribe</button>
+                    </form>
+                </div>
+                <!-- End Newsletter Form -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /End Newsletter Area -->

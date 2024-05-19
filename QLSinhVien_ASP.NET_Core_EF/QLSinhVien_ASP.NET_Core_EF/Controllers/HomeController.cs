@@ -12,15 +12,17 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly QLSV_DOTNET_CoreContext mydb;
+        public HomeController(ILogger<HomeController> logger, QLSV_DOTNET_CoreContext mydb)
         {
+            this.mydb = mydb;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var data = mydb.Khoas.ToList();
+            return View(data);
         }
 
         public IActionResult Privacy()
@@ -28,10 +30,6 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
     }
 }
