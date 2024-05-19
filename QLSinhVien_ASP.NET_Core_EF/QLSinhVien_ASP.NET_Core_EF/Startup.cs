@@ -26,7 +26,7 @@ namespace QLSinhVien_ASP.NET_Core_EF
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<QLSinhVien_BTCK_CsharpContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionDB")));
+            services.AddDbContext<QLSV_DOTNET_CoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionDB")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

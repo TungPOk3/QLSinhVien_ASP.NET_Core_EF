@@ -18,10 +18,10 @@ namespace QLSinhVien_ASP.NET_Core_EF.Models
         public DateTime? NgaySinh { get; set; }
         public string Sdt { get; set; }
         public string Email { get; set; }
-        public int? IdChuyenNganh { get; set; }
         public int? IdLopSh { get; set; }
+        public int? IdKhoa { get; set; }
 
-        public virtual ChuyenNganh IdChuyenNganhNavigation { get; set; }
+        public virtual Khoa IdKhoaNavigation { get; set; }
         public virtual LopSh IdLopShNavigation { get; set; }
         public virtual ICollection<LopHpSinhVien> LopHpSinhViens { get; set; }
         public virtual ICollection<TheSinhVien> TheSinhViens { get; set; }
