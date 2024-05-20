@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QLSinhVien_ASP.NET_Core_EF.Models;
+using QLSinhVien_ASP.NET_Core_EF.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,13 @@ namespace QLSinhVien_ASP.NET_Core_EF
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            // Đăng ký KhoaServices
+            services.AddScoped<KhoaServices>();
+            services.AddScoped<GiaoVienServices>();
+            services.AddScoped<LopSHServices>();
+            services.AddScoped<SinhVienServices>();
+            services.AddScoped<LopHPServices>();
+            services.AddScoped<LopHPDetailServices>();
             services.AddDbContext<QLSV_DOTNET_CoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionDB")));
         }
 

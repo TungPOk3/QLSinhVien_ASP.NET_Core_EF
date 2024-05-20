@@ -230,6 +230,10 @@ namespace QLSinhVien_ASP.NET_Core_EF.Models
                     .HasColumnType("date")
                     .HasColumnName("fromDay");
 
+                entity.Property(e => e.HinhAnh)
+                    .HasMaxLength(200)
+                    .HasColumnName("hinhAnh");
+
                 entity.Property(e => e.HoTenSv)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -246,11 +250,6 @@ namespace QLSinhVien_ASP.NET_Core_EF.Models
                 entity.Property(e => e.ToDay)
                     .HasColumnType("date")
                     .HasColumnName("toDay");
-
-                entity.HasOne(d => d.IdSinhVienNavigation)
-                    .WithMany(p => p.TheSinhViens)
-                    .HasForeignKey(d => d.IdSinhVien)
-                    .HasConstraintName("FK__TheSinhVi__idSin__412EB0B6");
             });
 
             OnModelCreatingPartial(modelBuilder);
