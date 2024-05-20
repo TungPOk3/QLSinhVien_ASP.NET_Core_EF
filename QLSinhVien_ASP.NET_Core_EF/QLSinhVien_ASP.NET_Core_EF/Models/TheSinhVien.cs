@@ -13,7 +13,6 @@ namespace QLSinhVien_ASP.NET_Core_EF.Models
         public DateTime? FromDay { get; set; }
         public DateTime? ToDay { get; set; }
         public int? IdSinhVien { get; set; }
-
-        public virtual SinhVien IdSinhVienNavigation { get; set; }
+        public string HinhAnh { get; set; }
     }
 }
