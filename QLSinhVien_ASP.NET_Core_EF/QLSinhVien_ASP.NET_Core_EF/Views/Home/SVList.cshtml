@@ -30,7 +30,7 @@
                                     <li><a href="#">Giới thiệu </a></li>
                                     <li><a href="/Home/ChuNhaXe">Nhà xe </a></li>
                                     <li><a href="Home/QLLichTrinh">Chuyến xe </a></li>
-                                    <li><a href="/Home/TaiXeInfor">Tài xế </i></a></li>
+                                    <li><a href="/Home/TaiXeInfor">Tài xế </a></li>
                                     <li><a href="contact.html">Liên hệ</a></li>
                                 </ul>
                             </nav>
@@ -85,6 +85,7 @@
                             <th>Email</th>
                             <th>Tên lớp sinh hoạt</th>
                             <th>Tên khoa</th>
+                            <th></th>
                         </tr>
                         @foreach (var item in Model)
                         {
@@ -95,6 +96,7 @@
                                 <td>@item.Email</td>
                                 <td>@item.TenLopSH</td>
                                 <td>@item.TenKhoa</td>
+                                <td><a href="/Home/TheSVDetail?id=@item.IdSinhVien">Xem chi tiết</a></td>
                             </tr>
                         }
                     </table>

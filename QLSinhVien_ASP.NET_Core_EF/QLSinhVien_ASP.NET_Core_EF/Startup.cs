@@ -34,6 +34,7 @@ namespace QLSinhVien_ASP.NET_Core_EF
             services.AddScoped<SinhVienServices>();
             services.AddScoped<LopHPServices>();
             services.AddScoped<LopHPDetailServices>();
+            services.AddScoped<TheSinhVienServices>();
             services.AddDbContext<QLSV_DOTNET_CoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionDB")));
         }
 

@@ -20,11 +20,12 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
         private readonly SinhVienServices sinhVienServices;
         private readonly LopHPServices lopHPServices;
         private readonly LopHPDetailServices lopHPDetailServices;
+        private readonly TheSinhVienServices theSinhVienServices;
 
 
         public HomeController(ILogger<HomeController> logger, KhoaServices khoaServices,
             GiaoVienServices gvServices, LopSHServices lopSHServices, SinhVienServices sinhVienServices, 
-            LopHPServices lopHPServices, LopHPDetailServices lopHPDetailServices)
+            LopHPServices lopHPServices, LopHPDetailServices lopHPDetailServices, TheSinhVienServices theSinhVienServices)
         {
             _logger = logger;
             this.khoaServices = khoaServices;
@@ -33,6 +34,7 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
             this.sinhVienServices = sinhVienServices;
             this.lopHPServices = lopHPServices;
             this.lopHPDetailServices = lopHPDetailServices;
+            this.theSinhVienServices = theSinhVienServices;
         }
 
         public IActionResult Index()
@@ -75,6 +77,12 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
         {
             List<LopHPDetailViewModels> list = lopHPDetailServices.getByIdLopHP(id);
             return View(list);
+        }
+
+        public IActionResult TheSVDetail(int id)
+        {
+            List<TheSinhVien> data = theSinhVienServices.getById(id);
+            return View(data);
         }
         public IActionResult Privacy()
         {
