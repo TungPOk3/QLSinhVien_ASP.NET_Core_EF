@@ -123,5 +123,51 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
             gvServices.Delete(id);
             return RedirectToAction("GVManage");
         }
+
+        public IActionResult LopSHManage()
+        {
+            List<LopSHViewModels> data = lopSHServices.getAll();
+            return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult AddLopSH()
+        {
+            List<GiaoVien> dsgv = gvServices.getAllGV();
+            return View(dsgv);
+        }
+
+        [HttpPost]
+        public IActionResult AddLopSH(LopSh lop)
+        {
+            if (ModelState.IsValid)
+            {
+                lopSHServices.Add(lop);
+                return RedirectToAction("LopSHManage");
+            }
+            return View(lop);
+        }
+
+        [HttpGet]
+        public IActionResult EditLopSH(int id)
+        {
+            List<GiaoVien> gv = gvServices.getAllGV();
+            LopSh l = lopSHServices.getById(id);
+            var data = new Tuple<LopSh, List<GiaoVien>>(l, gv);
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult EditLopSH(LopSh l)
+        {
+
+            lopSHServices.Edit(l);
+            return RedirectToAction("LopSHManage");
+        }
+
+        public IActionResult DeleteLopSH(int id)
+        {
+            lopSHServices.Delete(id);
+            return RedirectToAction("LopSHManage");
+        }
     }
 }

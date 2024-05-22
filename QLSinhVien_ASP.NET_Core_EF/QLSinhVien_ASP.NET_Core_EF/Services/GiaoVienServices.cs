@@ -38,7 +38,7 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
                 gvfull.NgaySinh = (DateTime)item.NgaySinh;
                 gvfull.SDT = item.Sdt;
                 gvfull.Email = item.Email;
-                
+
                 var tk = mydb.Khoas.FirstOrDefault(t => t.IdKhoa == item.IdKhoa);
                 gvfull.TenKhoa = tk.TenKhoa;
                 listgvfull.Add(gvfull);
@@ -47,16 +47,20 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
 
         }
 
-        
+        public List<GiaoVien> getAllGV()
+        {
+            return mydb.GiaoViens.ToList();
+        }
         public void Add(GiaoVien gv)
         {
-            
+
             mydb.GiaoViens.Add(gv);
             mydb.SaveChanges();
         }
 
         public void Edit(GiaoVien giaovien)
         {
+
             GiaoVien gv = mydb.GiaoViens.Find(giaovien.IdGiaoVien);
             gv.TenGv = giaovien.TenGv;
             gv.NgaySinh = giaovien.NgaySinh;
