@@ -12,5 +12,6 @@ namespace QLSinhVien_ASP.NET_Core_EF.ViewModels
         public string MoTa { get; set; }
         public int? IdGiaoVien { get; set; }
         public string TenGV { get; set; }
+        public int SLSinhVien { get; set; }
     }
 }

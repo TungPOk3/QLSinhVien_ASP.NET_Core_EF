@@ -43,6 +43,10 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
             return listsvfull;
         }
 
+        public List<SinhVien> getAllSV()
+        {
+            return mydb.SinhViens.ToList();
+        }
         public void Add(SinhVien sv)
         {
 
@@ -68,6 +72,11 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
             SinhVien sv = mydb.SinhViens.Find(id);
             mydb.SinhViens.Remove(sv);
             mydb.SaveChanges();
+        }
+
+        public List<SinhVien> search(string s)
+        {
+            return mydb.SinhViens.Where(t => t.TenSv.Contains(s)).ToList();
         }
     }
 }

@@ -76,5 +76,11 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
             mydb.SinhViens.Remove(sv);
             mydb.SaveChanges();
         }
+
+        public List<GiaoVien> search(string s)
+        {
+            return mydb.GiaoViens.Where(t => t.TenGv.Contains(s)).ToList();
+        }
     }
 }
+
