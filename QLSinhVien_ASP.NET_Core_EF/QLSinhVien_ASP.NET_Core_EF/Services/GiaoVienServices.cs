@@ -19,37 +19,14 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
         }
 
 
-        public GiaoVien getById(int id)
+        /*public GVViewModels getById(int id)
         {
-            return mydb.GiaoViens.Where(n => n.IdGiaoVien == id).FirstOrDefault();
-        }
+            var gv = mydb.GiaoViens.Where(n => n.IdGiaoVien == id).FirstOrDefault();
+            
+            return gv;
+        }*/
         public List<GVViewModels> getAllInfo()
         {
-            /*var data = (from gv in mydb.GiaoViens
-                        join k in mydb.Khoas
-                        on gv.IdKhoa equals k.IdKhoa
-                        select new GVViewModels
-                        {
-                            TenGV = gv.TenGv,
-                            NgaySinh = (DateTime)gv.NgaySinh,
-                            SDT = gv.Sdt,
-                            Email = gv.Email,
-                            TenKhoa = k.TenKhoa
-                        }).ToList();
-
-
-            List<GVViewModels> list = new List<GVViewModels>();
-            foreach (var i in data)
-            {
-                GVViewModels gv = new GVViewModels();
-                gv.TenGV = i.TenGV;
-                gv.NgaySinh = i.NgaySinh;
-                gv.SDT = i.SDT;
-                gv.Email = i.Email;
-                gv.TenKhoa = i.TenKhoa;
-                list.Add(gv);
-            }
-            return data;*/
             var listgv = mydb.GiaoViens.ToList();
             List<GVViewModels> listgvfull = new List<GVViewModels>();
             GVViewModels gvfull;
@@ -69,6 +46,38 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
             }
             return listgvfull;
 
+        }
+
+        
+        public void Add(GVViewModels gv)
+        {
+            GiaoVien giaovien = new GiaoVien();
+            giaovien.IdGiaoVien = gv.IdGV;
+            giaovien.TenGv = gv.TenGV;
+            giaovien.NgaySinh = gv.NgaySinh;
+            giaovien.Sdt = gv.SDT;
+            giaovien.Email = gv.Email;
+            giaovien.IdKhoa = gv.IdKhoa;
+            mydb.GiaoViens.Add(giaovien);
+            mydb.SaveChanges();
+        }
+
+        public void Edit(GiaoVien giaovien)
+        {
+            GiaoVien gv = mydb.GiaoViens.Find(giaovien.IdGiaoVien);
+            gv.TenGv = giaovien.TenGv;
+            gv.NgaySinh = giaovien.NgaySinh;
+            gv.Sdt = giaovien.Sdt;
+            gv.Email = giaovien.Email;
+            gv.IdKhoa = giaovien.IdKhoa;
+            mydb.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            GiaoVien gv = mydb.GiaoViens.Find(id);
+            mydb.GiaoViens.Remove(gv);
+            mydb.SaveChanges();
         }
     }
 }

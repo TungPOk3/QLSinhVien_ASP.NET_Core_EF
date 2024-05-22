@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QLSinhVien_ASP.NET_Core_EF.Models;
 using QLSinhVien_ASP.NET_Core_EF.Services;
+using QLSinhVien_ASP.NET_Core_EF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
             this.theSinhVienServices = theSinhVienServices;
         }
         
-
+        //Khoa manage
         public IActionResult KhoaManage()
         {
             List<Khoa> data = khoaServices.getAll();
@@ -74,5 +75,49 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
             khoaServices.Delete(id);
             return RedirectToAction("KhoaManage");
         }
+
+        //Giáo viên manage
+        public IActionResult GVManage()
+        {
+            List<GVViewModels> data = gvServices.getAllInfo();
+            return View(data);
+        }
+        [HttpGet]
+        public IActionResult AddGV()
+        {
+            List<Khoa> dskhoa = khoaServices.getAll();
+            return View(dskhoa);
+        }
+
+        [HttpPost]
+        public IActionResult AddGV(GVViewModels gv)
+        {
+            if (ModelState.IsValid)
+            {
+                gvServices.Add(gv);
+                return RedirectToAction("GVManage");
+            }
+            return View(gv);
+        }
+/*
+        [HttpGet]
+        public IActionResult EditGV(int id)
+        {
+            GVViewModels gv = gvServices.getById(id);
+            return View(gv);
+        }
+        [HttpPost]
+        public IActionResult EditGV(GVViewModels gv)
+        {
+
+            gvServices.Edit(gv);
+            return RedirectToAction("GVManage");
+        }
+
+        public IActionResult DeleteGV(int id)
+        {
+            gvServices.Delete(id);
+            return RedirectToAction("GVManage");
+        }*/
     }
 }
