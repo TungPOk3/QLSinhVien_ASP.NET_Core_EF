@@ -169,5 +169,74 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
             lopSHServices.Delete(id);
             return RedirectToAction("LopSHManage");
         }
+
+        //Sinh viên manage
+
+        public IActionResult SVManage()
+        {
+            List<SVViewModels> data = sinhVienServices.getAll();
+            return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult AddSV()
+        {
+            List<Khoa> kh = khoaServices.getAll();
+            List<LopSh> l = lopSHServices.getAllLopSH();
+            var data = new Tuple<List<Khoa>, List<LopSh>>(kh, l);
+            return View(data);
+        }
+
+        [HttpPost]
+        public IActionResult AddSV(SinhVien sv)
+        {
+            if (ModelState.IsValid)
+            {
+                sinhVienServices.Add(sv);
+                return RedirectToAction("SVManage");
+            }
+            return View(sv);
+        }
+
+        [HttpGet]
+        public IActionResult EditSV(int id)
+        {
+            List<Khoa> kh = khoaServices.getAll();
+            List<LopSh> l = lopSHServices.getAllLopSH();
+            SinhVien sv = sinhVienServices.getById(id);
+            var data = new Tuple<SinhVien, List<Khoa>, List<LopSh>>(sv, kh, l);
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult EditSV(SinhVien sv)
+        {
+
+            sinhVienServices.Edit(sv);
+            return RedirectToAction("SVManage");
+        }
+
+        public IActionResult DeleteSV(int id)
+        {
+            
+            try
+            {
+                sinhVienServices.Delete(id);
+                return RedirectToAction("SVManage");
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    // Hiển thị thông báo lỗi ràng buộc khóa ngoại
+                    TempData["ErrorMessage"] = "Không thể xóa sinh viên này vì sinh viên này đang tồn tại trong 1 lớp học phần.";
+                    return RedirectToAction("SVManage");
+                }
+                else
+                {
+                    // Xử lý các lỗi khác
+                    throw;
+                }
+            }
+        }
     }
 }

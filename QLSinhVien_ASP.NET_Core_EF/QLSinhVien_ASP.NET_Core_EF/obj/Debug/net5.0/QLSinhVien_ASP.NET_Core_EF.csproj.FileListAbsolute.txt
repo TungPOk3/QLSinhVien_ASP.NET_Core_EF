@@ -155,3 +155,6 @@ E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVie
 E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Manage\LopSHManage.cshtml.g.cs
 E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Manage\AddLopSH.cshtml.g.cs
 E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Manage\EditLopSH.cshtml.g.cs
+E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Manage\SVManage.cshtml.g.cs
+E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Manage\AddSV.cshtml.g.cs
+E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Manage\EditSV.cshtml.g.cs

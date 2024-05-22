@@ -1,7 +1,7 @@
-﻿@model Tuple<QLSinhVien_ASP.NET_Core_EF.Models.GiaoVien, List<QLSinhVien_ASP.NET_Core_EF.Models.Khoa>>
+﻿@model Tuple<QLSinhVien_ASP.NET_Core_EF.Models.SinhVien, List<QLSinhVien_ASP.NET_Core_EF.Models.Khoa>, List<QLSinhVien_ASP.NET_Core_EF.Models.LopSh>>
 
 @{
-    ViewData["Title"] = "EditKhoa";
+    ViewData["Title"] = "EditSV";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -53,27 +53,27 @@
 <section class="contact-us section">
     <div class="container">
         <div class="inner">
-            <div class="row" style="justify-content: center; margin-bottom:80px;">
+            <div class="row" style="justify-content: center; margin-bottom:400px;">
                 <div class="col-lg-8">
                     <div class="contact-us-form">
                         <h2>Chỉnh sửa</h2>
                         <!-- Form -->
-                        <form class="form" method="post" action="/Manage/EditGV">
+                        <form class="form" method="post" action="/Manage/EditSV">
                             <div class="row">
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>ID Giáo viên</label>
+                                        <label>ID Sinh viên</label>
                                         <div class="input-group">
-                                            <span class="form-control" id="idgv">@Model.Item1.IdGiaoVien</span>
-                                            <input type="hidden" name="idGiaoVien" value="@Model.Item1.IdGiaoVien" required>
+                                            <span class="form-control" id="idsv">@Model.Item1.IdSinhVien</span>
+                                            <input type="hidden" name="idSinhVien" value="@Model.Item1.IdSinhVien" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Tên giáo viên</label>
-                                        <input type="text" name="tengv" value="@Model.Item1.TenGv" required="">
+                                        <label>Tên sinh viên</label>
+                                        <input type="text" name="tensv" value="@Model.Item1.TenSv" required="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -118,6 +118,36 @@
                                                 else
                                                 {
                                                     <option value="@item.IdKhoa">@item.TenKhoa</option>
+
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <style>
+                                            .nice-select {
+                                                width: 310px;
+                                                height: 50px;
+                                            }
+
+                                            .current {
+                                                display: block;
+                                                padding: 10px;
+                                            }
+                                        </style>
+                                        <label>Lớp SH</label>
+                                        <select name="idlopsh">
+                                            @foreach (var item in Model.Item3)
+                                            {
+                                                if (item.IdLopSh == Model.Item1.IdLopSh)
+                                                {
+                                                    <option value="@item.IdLopSh" selected="selected">@item.TenLopSh</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.IdLopSh">@item.TenLopSh</option>
 
                                                 }
                                             }

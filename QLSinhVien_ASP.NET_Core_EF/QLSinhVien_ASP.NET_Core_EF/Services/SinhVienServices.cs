@@ -15,7 +15,11 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
         {
             mydb = dbContext;
         }
-
+        public SinhVien getById(int id)
+        {
+            var sv = mydb.SinhViens.Where(n => n.IdSinhVien == id).FirstOrDefault();
+            return sv;
+        }
         public List<SVViewModels> getAll()
         {
             var listsv = mydb.SinhViens.ToList();
@@ -39,6 +43,31 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
             return listsvfull;
         }
 
-        
+        public void Add(SinhVien sv)
+        {
+
+            mydb.SinhViens.Add(sv);
+            mydb.SaveChanges();
+        }
+
+        public void Edit(SinhVien sinhvien)
+        {
+
+            SinhVien sv = mydb.SinhViens.Find(sinhvien.IdSinhVien);
+            sv.TenSv = sinhvien.TenSv;
+            sv.NgaySinh = sinhvien.NgaySinh;
+            sv.Sdt = sinhvien.Sdt;
+            sv.Email = sinhvien.Email;
+            sv.IdKhoa = sinhvien.IdKhoa;
+            sv.IdLopSh = sinhvien.IdLopSh;
+            mydb.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            SinhVien sv = mydb.SinhViens.Find(id);
+            mydb.SinhViens.Remove(sv);
+            mydb.SaveChanges();
+        }
     }
 }
