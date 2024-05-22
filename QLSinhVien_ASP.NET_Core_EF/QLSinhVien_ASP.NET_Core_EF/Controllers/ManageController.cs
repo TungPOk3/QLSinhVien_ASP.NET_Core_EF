@@ -4,6 +4,7 @@ using QLSinhVien_ASP.NET_Core_EF.Services;
 using QLSinhVien_ASP.NET_Core_EF.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -90,8 +91,9 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddGV(GVViewModels gv)
+        public IActionResult AddGV(GiaoVien gv)
         {
+            
             if (ModelState.IsValid)
             {
                 gvServices.Add(gv);
@@ -99,15 +101,17 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
             }
             return View(gv);
         }
-/*
+
         [HttpGet]
         public IActionResult EditGV(int id)
         {
-            GVViewModels gv = gvServices.getById(id);
-            return View(gv);
+            List<Khoa> kh = khoaServices.getAll();
+            GiaoVien gv = gvServices.getById(id);
+            var data = new Tuple<GiaoVien, List<Khoa>>(gv, kh);
+            return View(data);
         }
         [HttpPost]
-        public IActionResult EditGV(GVViewModels gv)
+        public IActionResult EditGV(GiaoVien gv)
         {
 
             gvServices.Edit(gv);
@@ -118,6 +122,6 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
         {
             gvServices.Delete(id);
             return RedirectToAction("GVManage");
-        }*/
+        }
     }
 }

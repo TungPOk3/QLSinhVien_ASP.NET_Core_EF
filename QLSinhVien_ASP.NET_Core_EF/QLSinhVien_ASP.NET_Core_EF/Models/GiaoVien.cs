@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 #nullable disable
 
 namespace QLSinhVien_ASP.NET_Core_EF.Models
@@ -12,7 +13,7 @@ namespace QLSinhVien_ASP.NET_Core_EF.Models
             LopHps = new HashSet<LopHp>();
             LopShes = new HashSet<LopSh>();
         }
-
+       
         public int IdGiaoVien { get; set; }
         public string TenGv { get; set; }
         public DateTime? NgaySinh { get; set; }
