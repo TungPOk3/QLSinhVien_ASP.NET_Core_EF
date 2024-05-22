@@ -72,8 +72,8 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
 
         public void Delete(int id)
         {
-            GiaoVien gv = mydb.GiaoViens.Find(id);
-            mydb.GiaoViens.Remove(gv);
+            SinhVien sv = mydb.SinhViens.Find(id);
+            mydb.SinhViens.Remove(sv);
             mydb.SaveChanges();
         }
     }

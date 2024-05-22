@@ -37,6 +37,11 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
 
             return listlopshfull;
         }
+
+        public List<LopSh> getAllLopSH()
+        {
+            return mydb.LopShes.ToList();
+        }
         public LopSh getById(int id)
         {
             var l = mydb.LopShes.Where(n => n.IdLopSh == id).FirstOrDefault();
