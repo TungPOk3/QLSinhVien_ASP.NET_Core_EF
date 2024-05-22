@@ -34,5 +34,35 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
             }
             return listhpfull;
         }
+
+        public LopHp getById(int id)
+        {
+            var l = mydb.LopHps.Where(n => n.IdLopHp == id).FirstOrDefault();
+            return l;
+        }
+        public void Add(LopHp lop)
+        {
+
+            mydb.LopHps.Add(lop);
+            mydb.SaveChanges();
+        }
+
+        public void Edit(LopHp lop)
+        {
+
+            LopHp l = mydb.LopHps.Find(lop.IdLopHp);
+            l.TenLopHp = lop.TenLopHp;
+            l.MoTa = lop.MoTa;
+            l.IdGiaoVien = lop.IdGiaoVien;
+
+            mydb.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            LopHp l = mydb.LopHps.Find(id);
+            mydb.LopHps.Remove(l);
+            mydb.SaveChanges();
+        }
     }
 }

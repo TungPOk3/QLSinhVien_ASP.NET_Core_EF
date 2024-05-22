@@ -16,6 +16,12 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
             mydb = dbContext;
         }
 
+        public LopHpSinhVien getById(int idlophp)
+        {
+            var data = mydb.LopHpSinhViens.Where(n => n.IdLopHp == idlophp).FirstOrDefault();
+            return data;
+        }
+
         public List<LopHPDetailViewModels> getByIdLopHP(int idlophp)
         {
             var listhpsv = (from lhp in mydb.LopHpSinhViens 
@@ -43,6 +49,20 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
                 listhpsvfull.Add(hpsvfull);
             }
             return listhpsvfull;
+        }
+
+        public void Add(LopHpSinhVien sv)
+        {
+
+            mydb.LopHpSinhViens.Add(sv);
+            mydb.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            LopHpSinhVien l = mydb.LopHpSinhViens.Find(id);
+            mydb.LopHpSinhViens.Remove(l);
+            mydb.SaveChanges();
         }
     }
 }

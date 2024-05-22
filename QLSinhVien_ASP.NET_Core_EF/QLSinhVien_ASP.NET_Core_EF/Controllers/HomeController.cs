@@ -89,5 +89,16 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
             return View();
         }
 
+        public ActionResult SinhVienSearch(string s)
+        {
+            var list = sinhVienServices.search(s);
+            return View(list);
+        }
+
+        public ActionResult GiaoVienSearch(string s)
+        {
+            var list = gvServices.search(s);
+            return View(list);
+        }
     }
 }

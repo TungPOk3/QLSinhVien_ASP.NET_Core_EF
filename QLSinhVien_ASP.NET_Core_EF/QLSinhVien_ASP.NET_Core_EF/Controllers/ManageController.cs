@@ -238,5 +238,87 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
                 }
             }
         }
+
+        //Lớp học phần manage
+
+        public IActionResult LopHPManage()
+        {
+            List<LopHPViewModels> data = lopHPServices.getAll();
+            return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult AddLopHP()
+        {
+            List<GiaoVien> dsgv = gvServices.getAllGV();
+            return View(dsgv);
+        }
+
+        [HttpPost]
+        public IActionResult AddLopHP(LopHp lop)
+        {
+            if (ModelState.IsValid)
+            {
+                lopHPServices.Add(lop);
+                return RedirectToAction("LopHPManage");
+            }
+            return View(lop);
+        }
+
+        [HttpGet]
+        public IActionResult EditLopHP(int id)
+        {
+            List<GiaoVien> gv = gvServices.getAllGV();
+            LopHp l = lopHPServices.getById(id);
+            var data = new Tuple<LopHp, List<GiaoVien>>(l, gv);
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult EditLopHP(LopHp l)
+        {
+
+            lopHPServices.Edit(l);
+            return RedirectToAction("LopHPManage");
+        }
+
+        public IActionResult DeleteLopHP(int id)
+        {
+            lopHPServices.Delete(id);
+            return RedirectToAction("LopHPManage");
+        }
+
+        //Lớp học phần chi tiết manage
+
+        public IActionResult LopHPDetailManage(int id)
+        {
+            List<LopHPDetailViewModels> data = lopHPDetailServices.getByIdLopHP(id);
+            return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult AddSVLopHP(int id)
+        {
+            LopHpSinhVien lophp = lopHPDetailServices.getById(id);
+            List<SinhVien> dssv = sinhVienServices.getAllSV();
+            var data = new Tuple<LopHpSinhVien, List< SinhVien >>(lophp, dssv);
+            return View(data);
+        }
+
+        [HttpPost]
+        public IActionResult AddSVLopHP(LopHpSinhVien lop)
+        {
+            if (ModelState.IsValid)
+            {
+                lopHPDetailServices.Add(lop);
+                return RedirectToAction("LopHPManage");
+            }
+            return View(lop);
+        }
+
+        public IActionResult DeleteSVLopHP(int id)
+        {
+            lopHPDetailServices.Delete(id);
+            return RedirectToAction("LopHPManage");
+        }
     }
 }
