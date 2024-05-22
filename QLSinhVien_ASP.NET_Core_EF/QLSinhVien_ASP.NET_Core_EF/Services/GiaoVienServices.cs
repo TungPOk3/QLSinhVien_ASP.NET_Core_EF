@@ -19,12 +19,11 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
         }
 
 
-        /*public GVViewModels getById(int id)
+        public GiaoVien getById(int id)
         {
             var gv = mydb.GiaoViens.Where(n => n.IdGiaoVien == id).FirstOrDefault();
-            
             return gv;
-        }*/
+        }
         public List<GVViewModels> getAllInfo()
         {
             var listgv = mydb.GiaoViens.ToList();
@@ -49,16 +48,10 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
         }
 
         
-        public void Add(GVViewModels gv)
+        public void Add(GiaoVien gv)
         {
-            GiaoVien giaovien = new GiaoVien();
-            giaovien.IdGiaoVien = gv.IdGV;
-            giaovien.TenGv = gv.TenGV;
-            giaovien.NgaySinh = gv.NgaySinh;
-            giaovien.Sdt = gv.SDT;
-            giaovien.Email = gv.Email;
-            giaovien.IdKhoa = gv.IdKhoa;
-            mydb.GiaoViens.Add(giaovien);
+            
+            mydb.GiaoViens.Add(gv);
             mydb.SaveChanges();
         }
 

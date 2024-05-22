@@ -107,8 +107,8 @@
                                     <td>@i.Email</td>
                                     <td>@i.TenKhoa</td>
                                     <td>
-                                        <a href="/Manage/EditKhoa?id=@i.IdKhoa">Sửa</a> |
-                                        <a href="#" onclick="confirmDelete(@i.IdKhoa)">Xóa</a>
+                                        <a href="/Manage/EditGV?id=@i.IdGV">Sửa</a> |
+                                        <a href="#" onclick="confirmDelete(@i.IdGV)">Xóa</a>
                                     </td>
 
                                 </tr>
@@ -128,7 +128,7 @@
     function confirmDelete(id) {
         var result = confirm("Bạn có muốn xóa khoa này không?");
         if (result) {
-            window.location.href = "/Manage/DeleteKhoa?id=" + id;
+            window.location.href = "/Manage/DeleteGV?id=" + id;
         }
     }
 
