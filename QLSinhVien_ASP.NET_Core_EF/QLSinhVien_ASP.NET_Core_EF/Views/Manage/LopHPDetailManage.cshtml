@@ -1,0 +1,141 @@
+﻿@model IEnumerable<QLSinhVien_ASP.NET_Core_EF.ViewModels.LopHPDetailViewModels>
+
+@{
+    ViewData["Title"] = "LopHPDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header Area -->
+<header class="header">
+    <!-- Header Inner -->
+    <div class="header-inner" style="padding-top: 30px;">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Start Logo -->
+                        <div class="logo">
+                            <a href="index.html"><img src="~/images/logo_dhdn1.png" alt="#" style="width:200px;height:75px; object-fit:contain"></a>
+                        </div>
+                        <!-- End Logo -->
+                        <!-- Mobile Nav -->
+                        <div class="mobile-nav"></div>
+                        <!-- End Mobile Nav -->
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu">
+                            <nav class="navigation">
+                                <ul class="nav menu">
+                                    <li class="active"><a href="#">Trang chủ</a></li>
+                                    <li><a href="/Home/KhoaList">Khoa </a></li>
+                                    <li><a href="/Home/GVList">Giáo viên </a></li>
+                                    <li><a href="Home/SVList">Sinh viên </a></li>
+                                    <li><a href="/Home/LopSHList">Lớp SH </a></li>
+                                    <li><a href="/Home/LopHPList">Lớp HP</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--/ End Main Menu -->
+                    </div>
+                    <div class="col-lg-2 col-12">
+                        <div class="get-quote">
+                            <a href="/Home/LoginPage" class="btn">Đăng nhập</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!-- End Header Area -->
+<section class="Feautes section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title" style="margin-top:50px">
+                    <h2>Danh sách sinh viên</h2>
+                    <img src="~/images/section-img.png" alt="#">
+                </div>
+            </div>
+        </div>
+        <div class="row" style="justify-content: end;">
+            <div style="margin-right: 15px;">
+                <form action="/Home/ChuNhaXeSearch">
+                    <input name="s" type="text" placeholder="Tìm kiếm" style="padding: 10px; width: 400px;">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Single News -->
+
+<section class="news-single section">
+    <div class="container" style="max-width: 2000px; ">
+        <div class="row">
+            <div class="col-lg-2 col-12">
+                <div class="main-sidebar">
+                    <div class="single-widget category">
+                        <h3 class="title">Quản lý</h3>
+                        <ul class="categor-list">
+                             
+                            <li><a href="/Manage/AddSVLopHP">Thêm sinh viên</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-10 col-12">
+                <div class="main-sidebar">
+                    <div class="single-widget category">
+                        <table>
+                            <tr>
+                                <th>Tên sinh viên</th>
+                                <th>Ngày sinh</th>
+                                <th>SDT</th>
+                                <th>Email</th>
+                                <th>Khoa</th>
+                                <th>Lớp sinh hoạt</th>
+                                <th></th>
+
+                            </tr>
+                            @foreach (var i in Model)
+                            {
+                                <tr>
+                                    <td>@i.TenSv</td>
+                                    <td>@i.NgaySinh.ToString("dd/MM/yyyy")</td>
+                                    <td>@i.Sdt</td>
+                                    <td>@i.Email</td>
+                                    <td>@i.TenKhoa</td>
+                                    <td>@i.TenLopSH</td>
+                                    <td>
+                                        <a href="/Home/TheSVDetail?id=@i.IdSinhVien">Chi tiết</a> |
+                                        
+                                        <a href="#" onclick="confirmDelete(@i.IdSinhVien)">Xóa</a>
+
+                                    </td>
+
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<script>
+
+
+
+    function confirmDelete(id) {
+        var result = confirm("Bạn có muốn xóa sinh viên này ra khỏi lớp không?");
+        if (result) {
+            window.location.href = "/Manage/DeleteSVLopHP?id=" + id;
+        }
+    }
+
+
+</script>

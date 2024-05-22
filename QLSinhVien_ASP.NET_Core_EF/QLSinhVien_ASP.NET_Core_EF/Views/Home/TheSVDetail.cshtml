@@ -1,0 +1,119 @@
+﻿@model IEnumerable<QLSinhVien_ASP.NET_Core_EF.Models.TheSinhVien>
+
+@{
+    ViewData["Title"] = "Thông tin thẻ sinh viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<!-- Header Area -->
+<header class="header">
+    <!-- Header Inner -->
+    <div class="header-inner" style="padding-top: 30px;">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Start Logo -->
+                        <div class="logo">
+                            <a href="index.html"><img src="~/images/logo_dhdn1.png" alt="#" style="width:200px;height:75px; object-fit:contain"></a>
+                        </div>
+                        <!-- End Logo -->
+                        <!-- Mobile Nav -->
+                        <div class="mobile-nav"></div>
+                        <!-- End Mobile Nav -->
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu">
+                            <nav class="navigation">
+                                <ul class="nav menu">
+                                    <li class="active"><a href="#">Trang chủ</a></li>
+                                    <li><a href="/Home/KhoaList">Khoa </a></li>
+                                    <li><a href="/Home/GVList">Giáo viên </a></li>
+                                    <li><a href="Home/SVList">Sinh viên </a></li>
+                                    <li><a href="/Home/LopSHList">Lớp SH </a></li>
+                                    <li><a href="/Home/LopHPList">Lớp HP</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--/ End Main Menu -->
+                    </div>
+                    <div class="col-lg-2 col-12">
+                        <div class="get-quote">
+                            <a href="/Home/LoginPage" class="btn">Đăng nhập</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!-- End Header Area -->
+<section class="Feautes section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title" style="margin-top:50px">
+                    <h2>Thông tin thẻ sinh viên</h2>
+                    <img src="~/images/section-img.png" alt="#">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Single News -->
+
+<section class="news-single section">
+    <div class="container" style="max-width: 2000px;">
+        <div class="row">
+
+            <div class="col-12" style="margin-bottom: -80px;">
+                <div class="contact-us-form">
+                    
+                    <!-- Form -->
+                    <form class="form" style="margin-left:250px; margin-right:250px;">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Tên sinh viên</label>
+                                        <input type="text" name="tensv" value="@item.HoTenSv" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Tên lớp sinh hoạt</label>
+                                        <input type="text" name="tenlopsv" value="@item.TenLopSv" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Ngày hiệu lực</label>
+                                        <input type="date" name="fromday" value="@item.FromDay" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Ngày hết hạn</label>
+                                        <input type="date" name="today" value="@item.ToDay" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Hình ảnh</label>
+                                        <input type="image" name="hinhanh" value="@item.HinhAnh" required="">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </form>
+                    <!--/ End Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

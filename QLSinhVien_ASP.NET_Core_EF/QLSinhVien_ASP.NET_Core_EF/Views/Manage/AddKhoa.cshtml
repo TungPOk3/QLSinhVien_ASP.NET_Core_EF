@@ -1,0 +1,86 @@
+﻿@model QLSinhVien_ASP.NET_Core_EF.Models.Khoa
+
+@{
+    ViewData["Title"] = "AddKhoa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header Area -->
+<header class="header">
+    <!-- Header Inner -->
+    <div class="header-inner" style="padding-top: 30px;">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Start Logo -->
+                        <div class="logo">
+                            <a href="index.html"><img src="~/images/logo-benxe.png" alt="#" style="width:133px;height:60px;"></a>
+                        </div>
+                        <!-- End Logo -->
+                        <!-- Mobile Nav -->
+                        <div class="mobile-nav"></div>
+                        <!-- End Mobile Nav -->
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu">
+                            <nav class="navigation">
+                                <ul class="nav menu">
+                                    <li><a href="/Home/Index">Trang chủ</a></li>
+                                    <li><a href="/Home/KhoaList">Khoa </a></li>
+                                    <li ><a href="/Home/GVList">Giáo viên </a></li>
+                                    <li><a href="/Home/SVList">Sinh viên </a></li>
+                                    <li><a href="/Home/LopSHList">Lớp SH </i></a></li>
+                                    <li><a href="/Home/LopHPList">Lớp HP</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--/ End Main Menu -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!-- End Header Area -->
+<section class="contact-us section">
+    <div class="container">
+        <div class="inner">
+            <div class="row" style="justify-content: center;">
+                <div class="col-lg-8">
+                    <div class="contact-us-form">
+                        <h2>Thêm mới khoa</h2>
+                        <!-- Form -->
+                        <form class="form" method="post" action="/Manage/AddKhoa">
+                            <div class="row">
+                                
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Tên khoa</label>
+                                        <input type="text" name="tenkhoa"  required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Mô tả</label>
+                                        <input type="text" name="mota" required="">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div class="form-group login-btn">
+                                        <button class="btn" type="submit">Thêm mới</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                        <!--/ End Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

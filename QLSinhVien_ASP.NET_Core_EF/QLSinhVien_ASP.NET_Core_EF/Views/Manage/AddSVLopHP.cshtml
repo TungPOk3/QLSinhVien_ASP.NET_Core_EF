@@ -1,0 +1,112 @@
+﻿@model Tuple<QLSinhVien_ASP.NET_Core_EF.Models.LopHpSinhVien, List<QLSinhVien_ASP.NET_Core_EF.Models.SinhVien>>
+
+@{
+    ViewData["Title"] = "AddSVLopHP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Header Area -->
+<header class="header">
+    <!-- Header Inner -->
+    <div class="header-inner" style="padding-top: 30px;">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Start Logo -->
+                        <div class="logo">
+                            <a href="index.html"><img src="~/images/logo-benxe.png" alt="#" style="width:133px;height:60px;"></a>
+                        </div>
+                        <!-- End Logo -->
+                        <!-- Mobile Nav -->
+                        <div class="mobile-nav"></div>
+                        <!-- End Mobile Nav -->
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu">
+                            <nav class="navigation">
+                                <ul class="nav menu">
+                                    <li><a href="/Home/Index">Trang chủ</a></li>
+                                    <li><a href="/Home/KhoaList">Khoa </a></li>
+                                    <li ><a href="/Home/GVList">Giáo viên </a></li>
+                                    <li><a href="/Home/SVList">Sinh viên </a></li>
+                                    <li><a href="#">Lớp sinh hoạt </a></li>
+                                    <li><a href="/Home/LopHPList">Lớp HP</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--/ End Main Menu -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!-- End Header Area -->
+<section class="contact-us section">
+    <div class="container">
+        <div class="inner">
+            <div class="row" style="justify-content: center; padding-bottom: 80px;">
+                <div class="col-lg-8">
+                    <div class="contact-us-form">
+                        <h2>Thêm sinh viên viên vào lớp</h2>
+                        <!-- Form -->
+                        <form class="form" method="post" action="/Manage/AddSVLopHP"">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>ID Lớp học phần</label>
+                                        <div class="input-group">
+                                            <span class="form-control" id="idlophp">@Model.Item1.IdLopHp</span>
+                                            <input type="hidden" name="idGiaoVien" value="@Model.Item1.IdLopHp" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <style>
+                                            .nice-select {
+                                                width: 310px;
+                                                height: 50px;
+                                            }
+
+                                            .current {
+                                                display: block;
+                                                padding: 10px;
+                                            }
+                                        </style>
+                                        <label>Tên sinh viên</label>
+                                        <select name="idsv">
+                                            @foreach (var item in Model.Item2)
+                                            {
+                                                if (item.IdSinhVien == Model.Item1.IdSinhVien)
+                                                {
+                                                    <option value="@item.IdSinhVien" selected="selected">@item.TenSv</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.IdSinhVien">@item.TenSv</option>
+
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group login-btn">
+                                        <button class="btn" type="submit">Thêm mới</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                        <!--/ End Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
