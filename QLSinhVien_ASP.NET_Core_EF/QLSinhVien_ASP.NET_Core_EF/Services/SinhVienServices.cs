@@ -22,7 +22,7 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
         }
         public List<SVViewModels> getAll()
         {
-            var listsv = mydb.SinhViens.ToList();
+            var listsv = mydb.SinhViens.ToList().OrderBy(gv => gv.TenSv);
             List<SVViewModels> listsvfull = new List<SVViewModels>();
             SVViewModels svfull;
 

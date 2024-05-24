@@ -100,5 +100,15 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
             var list = gvServices.search(s);
             return View(list);
         }
+        public ActionResult LopSHSearch(string s)
+        {
+            var list = lopSHServices.search(s);
+            return View(list);
+        }
+        public ActionResult LopHPSearch(string s)
+        {
+            var list = lopHPServices.Search(s);
+            return View(list);
+        }
     }
 }

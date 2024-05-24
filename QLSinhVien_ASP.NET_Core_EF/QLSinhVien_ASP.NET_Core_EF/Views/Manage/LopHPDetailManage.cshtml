@@ -27,12 +27,12 @@
                         <div class="main-menu">
                             <nav class="navigation">
                                 <ul class="nav menu">
-                                    <li class="active"><a href="#">Trang chủ</a></li>
-                                    <li><a href="/Home/KhoaList">Khoa </a></li>
-                                    <li><a href="/Home/GVList">Giáo viên </a></li>
-                                    <li><a href="Home/SVList">Sinh viên </a></li>
-                                    <li><a href="/Home/LopSHList">Lớp SH </a></li>
-                                    <li><a href="/Home/LopHPList">Lớp HP</a></li>
+                                    <li><a href="/Home/Index">Trang chủ</a></li>
+                                    <li><a href="/Manage/KhoaManage">Khoa </a></li>
+                                    <li><a href="/Manage/GVManage">Giáo viên </a></li>
+                                    <li><a href="/Manage/SVManage">Sinh viên </a></li>
+                                    <li><a href="/Manage/LopSHManage">Lớp SH </a></li>
+                                    <li><a href="/Manage/LopHPManage">Lớp HP</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-lg-2 col-12">
                         <div class="get-quote">
-                            <a href="/Home/LoginPage" class="btn">Đăng nhập</a>
+                            <a href="/Manage/KhoaManage" class="btn">Trang quản lý</a>
                         </div>
                     </div>
                 </div>
@@ -80,12 +80,12 @@
                         <h3 class="title">Quản lý</h3>
                         <ul class="categor-list">
                              
-                            <li><a href="/Manage/AddSVLopHP">Thêm sinh viên</a></li>
+                            <li><a href="/Manage/AddSVLopHP?idLopHP=@Model.First().IdLopHp">Thêm sinh viên</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
+            
             <div class="col-lg-10 col-12">
                 <div class="main-sidebar">
                     <div class="single-widget category">
@@ -95,7 +95,6 @@
                                 <th>Ngày sinh</th>
                                 <th>SDT</th>
                                 <th>Email</th>
-                                <th>Khoa</th>
                                 <th>Lớp sinh hoạt</th>
                                 <th></th>
 
@@ -107,7 +106,6 @@
                                     <td>@i.NgaySinh.ToString("dd/MM/yyyy")</td>
                                     <td>@i.Sdt</td>
                                     <td>@i.Email</td>
-                                    <td>@i.TenKhoa</td>
                                     <td>@i.TenLopSH</td>
                                     <td>
                                         <a href="/Home/TheSVDetail?id=@i.IdSinhVien">Chi tiết</a> |
@@ -118,6 +116,7 @@
 
                                 </tr>
                             }
+                            
                         </table>
                     </div>
                 </div>

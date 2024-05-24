@@ -296,23 +296,25 @@ namespace QLSinhVien_ASP.NET_Core_EF.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddSVLopHP(int id)
+        public IActionResult AddSVLopHP(int idLopHP)
         {
-            LopHpSinhVien lophp = lopHPDetailServices.getById(id);
+            LopHpSinhVien lophp = lopHPDetailServices.getById(idLopHP);
             List<SinhVien> dssv = sinhVienServices.getAllSV();
             var data = new Tuple<LopHpSinhVien, List< SinhVien >>(lophp, dssv);
             return View(data);
         }
 
         [HttpPost]
-        public IActionResult AddSVLopHP(LopHpSinhVien lop)
+        public IActionResult AddSVLopHP(int idLopHP, int idSinhVien)
         {
-            if (ModelState.IsValid)
+
+            var lopHpSinhVien = new LopHpSinhVien
             {
-                lopHPDetailServices.Add(lop);
-                return RedirectToAction("LopHPManage");
-            }
-            return View(lop);
+                IdLopHp = idLopHP,
+                IdSinhVien = idSinhVien
+            };
+            lopHPDetailServices.Add(lopHpSinhVien);
+            return RedirectToAction("LopHPManage");
         }
 
         public IActionResult DeleteSVLopHP(int id)
