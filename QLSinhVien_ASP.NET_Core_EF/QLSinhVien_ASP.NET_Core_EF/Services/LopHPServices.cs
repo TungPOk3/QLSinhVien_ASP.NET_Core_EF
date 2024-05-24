@@ -18,7 +18,7 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
 
         public List<LopHPViewModels> getAll()
         {
-            var listhp = mydb.LopHps.ToList();
+            var listhp = mydb.LopHps.ToList().OrderBy(gv => gv.TenLopHp);
             List<LopHPViewModels> listhpfull = new List<LopHPViewModels>();
             LopHPViewModels hpfull;
 
@@ -63,6 +63,25 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
             LopHp l = mydb.LopHps.Find(id);
             mydb.LopHps.Remove(l);
             mydb.SaveChanges();
+        }
+
+        public List<LopHPViewModels> Search(string s)
+        {
+            var listhp = mydb.LopHps.Where(t => t.TenLopHp.Contains(s)).ToList();
+            List<LopHPViewModels> listhpfull = new List<LopHPViewModels>();
+            LopHPViewModels hpfull;
+
+            foreach (var item in listhp)
+            {
+                hpfull = new LopHPViewModels();
+                hpfull.IdLopHp = item.IdLopHp;
+                hpfull.TenLopHp = item.TenLopHp;
+                hpfull.MoTa = item.MoTa;
+                var hp = mydb.GiaoViens.FirstOrDefault(t => t.IdGiaoVien == item.IdGiaoVien);
+                hpfull.TenGV = hp.TenGv;
+                listhpfull.Add(hpfull);
+            }
+            return listhpfull;
         }
     }
 }

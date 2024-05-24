@@ -165,3 +165,5 @@ E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVie
 E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Manage\AddSVLopHP.cshtml.g.cs
 E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Home\SinhVienSearch.cshtml.g.cs
 E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Home\GiaoVienSearch.cshtml.g.cs
+E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Home\LopSHSearch.cshtml.g.cs
+E:\Document\C#_Saver\QLSinhVien_BTCK_Csharp\QLSinhVien_ASP.NET_Core_EF\QLSinhVien_ASP.NET_Core_EF\obj\Debug\net5.0\Razor\Views\Home\LopHPSearch.cshtml.g.cs

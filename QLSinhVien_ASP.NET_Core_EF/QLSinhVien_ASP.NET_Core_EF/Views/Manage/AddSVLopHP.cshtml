@@ -29,11 +29,11 @@
                             <nav class="navigation">
                                 <ul class="nav menu">
                                     <li><a href="/Home/Index">Trang chủ</a></li>
-                                    <li><a href="/Home/KhoaList">Khoa </a></li>
-                                    <li ><a href="/Home/GVList">Giáo viên </a></li>
-                                    <li><a href="/Home/SVList">Sinh viên </a></li>
-                                    <li><a href="#">Lớp sinh hoạt </a></li>
-                                    <li><a href="/Home/LopHPList">Lớp HP</a></li>
+                                    <li><a href="/Manage/KhoaManage">Khoa </a></li>
+                                    <li><a href="/Manage/GVManage">Giáo viên </a></li>
+                                    <li><a href="/Manage/SVManage">Sinh viên </a></li>
+                                    <li><a href="/Manage/LopSHManage">Lớp SH </a></li>
+                                    <li><a href="/Manage/LopHPManage">Lớp HP</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -52,45 +52,43 @@
             <div class="row" style="justify-content: center; padding-bottom: 80px;">
                 <div class="col-lg-8">
                     <div class="contact-us-form">
-                        <h2>Thêm sinh viên viên vào lớp</h2>
+                        <h2>Thêm sinh viên viên vào lớp </h2>
                         <!-- Form -->
-                        <form class="form" method="post" action="/Manage/AddSVLopHP"">
+                        <form class="form" method="post" action="/Manage/AddSVLopHP">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>ID Lớp học phần</label>
-                                        <div class="input-group">
-                                            <span class="form-control" id="idlophp">@Model.Item1.IdLopHp</span>
-                                            <input type="hidden" name="idGiaoVien" value="@Model.Item1.IdLopHp" required>
-                                        </div>
-                                    </div>
-                                </div>
+                                <input type="hidden" name="idLopHP" value="@Model.Item1.IdLopHp" />
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <style>
                                             .nice-select {
-                                                width: 310px;
+                                                width: 500px;
                                                 height: 50px;
+                                                
                                             }
 
                                             .current {
                                                 display: block;
                                                 padding: 10px;
                                             }
+
+                                            .scrollable-select {
+                                                display: flex;
+                                                flex-direction: column;
+                                                height: auto;
+                                                max-height: 300px;
+                                                overflow-y: auto;
+                                                padding-bottom: 200px;
+                                            }
+
+                                                .scrollable-select option {
+                                                    margin-bottom: 5px;
+                                                }
                                         </style>
                                         <label>Tên sinh viên</label>
-                                        <select name="idsv">
-                                            @foreach (var item in Model.Item2)
+                                        <select name="idSinhVien" multiple class="scrollable-select">
+                                            @for (int i = 0; i < Model.Item2.Count; i++)
                                             {
-                                                if (item.IdSinhVien == Model.Item1.IdSinhVien)
-                                                {
-                                                    <option value="@item.IdSinhVien" selected="selected">@item.TenSv</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@item.IdSinhVien">@item.TenSv</option>
-
-                                                }
+                                                <option value="@Model.Item2[i].IdSinhVien">@Model.Item2[i].TenSv</option>
                                             }
                                         </select>
                                     </div>
@@ -110,3 +108,4 @@
         </div>
     </div>
 </section>
+
