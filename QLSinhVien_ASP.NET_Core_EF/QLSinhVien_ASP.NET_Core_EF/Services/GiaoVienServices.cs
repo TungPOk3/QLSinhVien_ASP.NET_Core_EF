@@ -26,7 +26,7 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
         }
         public List<GVViewModels> getAllInfo()
         {
-            var listgv = mydb.GiaoViens.ToList();
+            var listgv = mydb.GiaoViens.ToList().OrderBy(gv => gv.TenGv);
             List<GVViewModels> listgvfull = new List<GVViewModels>();
             GVViewModels gvfull;
 
@@ -72,8 +72,8 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
 
         public void Delete(int id)
         {
-            SinhVien sv = mydb.SinhViens.Find(id);
-            mydb.SinhViens.Remove(sv);
+            GiaoVien gv = mydb.GiaoViens.Find(id);
+            mydb.GiaoViens.Remove(gv);
             mydb.SaveChanges();
         }
 

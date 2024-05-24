@@ -16,7 +16,6 @@ namespace QLSinhVien_ASP.NET_Core_EF.ViewModels
         public string Email { get; set; }
         public int IdLopSh { get; set; }
         public string TenLopSH { get; set; }
-        public int IdKhoa { get; set; }
-        public string TenKhoa { get; set; }
+        
     }
 }

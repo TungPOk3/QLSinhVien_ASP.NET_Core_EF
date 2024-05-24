@@ -18,7 +18,7 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
         }
         public List<LopSHViewModels> getAll()
         {
-            var listlopsh = mydb.LopShes.ToList();
+            var listlopsh = mydb.LopShes.ToList().OrderBy(gv => gv.TenLopSh);
             List<LopSHViewModels> listlopshfull = new List<LopSHViewModels>();
             LopSHViewModels lopshfull;
             
@@ -70,6 +70,11 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
             LopSh l = mydb.LopShes.Find(id);
             mydb.LopShes.Remove(l);
             mydb.SaveChanges();
+        }
+
+        public List<LopSh> search(string s)
+        {
+            return mydb.LopShes.Where(t => t.TenLopSh.Contains(s)).ToList();
         }
     }
 }

@@ -46,6 +46,8 @@ namespace QLSinhVien_ASP.NET_Core_EF.Services
                 hpsvfull.NgaySinh = (DateTime)sv.NgaySinh;
                 hpsvfull.Sdt = sv.Sdt;
                 hpsvfull.Email = sv.Email;
+                var lopsh = mydb.LopShes.FirstOrDefault(l => l.IdLopSh == sv.IdLopSh);
+                hpsvfull.TenLopSH = lopsh.TenLopSh;
                 listhpsvfull.Add(hpsvfull);
             }
             return listhpsvfull;
